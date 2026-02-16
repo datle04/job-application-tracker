@@ -15,9 +15,14 @@ import toast from 'react-hot-toast';
 interface JobApllicationCardProps {
     job: JobApplication;
     columns: Column[];
+    dragHandleProps?: React.HTMLAttributes<HTMLElement>;
 }
  
-const JobApplicationCard= ({job, columns} : JobApllicationCardProps) => {
+const JobApplicationCard= ({
+    job, 
+    columns,
+    dragHandleProps,
+} : JobApllicationCardProps) => {
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState({
         company: job.company,
@@ -77,7 +82,10 @@ const JobApplicationCard= ({job, columns} : JobApllicationCardProps) => {
 
   return (
     <>
-        <Card className='cursor-pointer transition-shadow hover-shadow-sm'>
+        <Card 
+            className='cursor-pointer transition-shadow hover-shadow-sm'
+            {...dragHandleProps}
+        >
             <CardContent className='p-4'>
                 <div className='flex items-start justify-between gap-2'>
                     <div className='flex-1 min-w-0'>
